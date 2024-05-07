@@ -7,8 +7,12 @@
   body{
     @apply min-h-screen font-josefin;
   }
+
+}
+
+@layer components{
   .container{
-    @apply px-6 mx-auto;
+    @apply px-6 mx-auto max-w-[588px];
   }
 }
 

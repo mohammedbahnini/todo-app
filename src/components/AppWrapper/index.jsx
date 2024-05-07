@@ -5,14 +5,14 @@ import classNames from 'classnames';
 function AppWrapper({children}) {
     const { state } = useContext(AppContext);
     const { theme } = state;
-    const style = classNames('relative z-0' ,{
+    const style = classNames('relative z-0 min-h-screen' ,{
         'bg-pale-gray' : theme === 'light' , 
         'bg-very-dark-blue' : theme === 'dark' , 
 
     });
 
     return (
-        <div className={style + ''}>
+        <div className={style}>
             {children}
         </div>
     )

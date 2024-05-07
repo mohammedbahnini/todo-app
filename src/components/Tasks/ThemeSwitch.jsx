@@ -12,7 +12,7 @@ function ThemeSwitch() {
     }
 
     return (
-        <div className='w-5 cursor-pointer ' onClick={handleSwitch}>
+        <div className='w-5 cursor-pointer  ' onClick={handleSwitch}>
             {theme === 'light' ?
                 (
                     <img src="/public/icon-moon.svg" alt="" />
