@@ -3,6 +3,7 @@ import { v4 as uuid } from "uuid";
 export const reducer = (state, action) => {
     const { type } = action;
     let newTasks = null;
+    let newFiltredTasks = null;
     switch (type) {
         case "CHANGE_THEME":
             return {
@@ -36,10 +37,11 @@ export const reducer = (state, action) => {
             break;
         case 'REMOVE_ALL_FINISHED':
             newTasks = state.tasks.filter(item => !item.isFinished);
+            newFiltredTasks = state.filteredTasks.filter(task => !task.isFinished);
             return {
                 ...state,
                 tasks: newTasks,
-                filteredTasks: newTasks
+                filteredTasks: newFiltredTasks
             }
             break;
         case 'FILTER_TASKS':
@@ -76,6 +78,7 @@ export const reducer = (state, action) => {
             break;
         case 'ADD_TASKS':
             const { text, isFinished } = action;
+            const { activeFilter } = state;
 
             const newTask = {
                 id: uuid(),
@@ -83,12 +86,24 @@ export const reducer = (state, action) => {
                 isFinished
             };
             newTasks = [...state.tasks];
+            newFiltredTasks = [...state.filteredTasks];
+
             newTasks.push(newTask);
+
+            if (activeFilter !== 'completed') {
+                newFiltredTasks.push(newTask);
+            }
 
             return {
                 ...state,
                 tasks: newTasks,
-                filteredTasks: newTasks
+                filteredTasks: newFiltredTasks
+            }
+            break;
+        case 'CHANGE_ORDER':
+            return {
+                ...state , 
+                filteredTasks : action.newFiltredTasks
             }
             break;
         default:

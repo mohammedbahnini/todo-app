@@ -6,7 +6,6 @@ import Filters from './components/Filters'
 import Notif from './components/Notification'
 import AppContextProvider from './contexts/AppContext';
 import AppWrapper from './components/AppWrapper';
-import withState from './utilities/withStateComponent';
 
 
 function App() {

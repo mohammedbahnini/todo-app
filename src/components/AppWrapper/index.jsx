@@ -3,8 +3,8 @@ import { AppContext } from '../../contexts/AppContext'
 import classNames from 'classnames';
 
 function AppWrapper({children}) {
-    const { state } = useContext(AppContext);
-    const { theme } = state;
+    const { state:{ theme } } = useContext(AppContext);
+
     const style = classNames('relative z-0 min-h-screen' ,{
         'bg-pale-gray' : theme === 'light' , 
         'bg-very-dark-blue' : theme === 'dark' , 

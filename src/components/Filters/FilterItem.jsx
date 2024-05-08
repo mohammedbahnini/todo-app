@@ -7,6 +7,13 @@ function FilterItem(props) {
     const { theme }= state;
     const { children } = props;
     const  isActive  = state.activeFilter === children;
+    
+    const btn = classNames('font-bold text-base capitalize   ' , { 
+        'text-light-blue' : isActive ,
+        'text-dark-gray ' : !isActive  , 
+        'hover:text-white ' : theme === 'dark' && !isActive, 
+        'hover:text-dark-blue ' : theme === 'light' && !isActive
+    })
 
 
     const handleClick = (e)=>{
@@ -16,12 +23,7 @@ function FilterItem(props) {
         })
     }
 
-    const btn = classNames('font-bold text-base capitalize   ' , { 
-        'text-light-blue' : isActive ,
-        'text-dark-gray ' : !isActive  , 
-        'hover:text-white ' : theme === 'dark' && !isActive, 
-        'hover:text-dark-blue ' : theme === 'light' && !isActive
-    })
+
     return (
         <button className={btn} onClick={handleClick}>{children}</button>
     )

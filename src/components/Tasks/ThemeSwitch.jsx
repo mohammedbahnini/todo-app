@@ -4,6 +4,8 @@ import { AppContext } from '../../contexts/AppContext'
 function ThemeSwitch() {
     const { state, dispatch } = useContext(AppContext);
     const { theme } = state;
+
+
     const handleSwitch = () => {
         dispatch({
             type: 'CHANGE_THEME',
@@ -13,15 +15,9 @@ function ThemeSwitch() {
 
     return (
         <div className='w-5 cursor-pointer  ' onClick={handleSwitch}>
-            {theme === 'light' ?
-                (
-                    <img src="/public/icon-moon.svg" alt="" />
-                ) :
-                (
-                    <img src="/public/icon-sun.svg" alt="" />
-                )
+            {
+                theme === 'light' ? <img src="/icon-moon.svg" alt="" /> : <img src="/icon-sun.svg" alt="" />
             }
-
         </div>
     )
 
